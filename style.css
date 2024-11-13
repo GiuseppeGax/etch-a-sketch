@@ -1,0 +1,14 @@
+
+body{
+    justify-content: center;
+}
+.center{
+    justify-self: center;
+    align-self: center;
+}
+.etchasketchname{
+    justify-self: center;
+    font-size: xx-large;
+    font-weight: 800;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
