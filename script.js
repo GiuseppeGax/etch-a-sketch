@@ -1,5 +1,15 @@
 let isDrawing = false
 
+const input = document.querySelector('#input');
+const reset = document.querySelector('#reset');
+
+
+reset.addEventListener('click', () =>{
+const gridsize = parseInt(input.value);
+input.textContent(" ");
+GenerateGrid(gridsize, gridsize);
+
+})
 
 function GenerateGrid(x, y){
     const container = document.querySelector("#container");
@@ -13,16 +23,16 @@ function GenerateGrid(x, y){
         gridcell.style.borderColor = "black";
         gridcell.style.borderWidth = "1px";
         gridcell.style.background = "white";
-        gridcell.style.height = "10px";
-        gridcell.style.width = "10px";
+        gridcell.style.height = "30px";
+        gridcell.style.width = "30px";
 
         gridcell.addEventListener('mousedown', () => {
             isDrawing = true;
-            toggleDrawing();
+            toggleDrawing(gridcell);
         });
-        gridcell.addEventListener('mousehover', () => {
+        gridcell.addEventListener('mouseover', () => {
             if (isDrawing){
-                toggleDrawing(); 
+                toggleDrawing(gridcell); 
             }
         });
 
@@ -42,7 +52,7 @@ function GenerateGrid(x, y){
 
 
 
-function toggleDrawing(){
+function toggleDrawing(gridcell){
     if (gridcell.style.background == "white"){
         gridcell.style.background = "black"
     }
@@ -52,7 +62,8 @@ function toggleDrawing(){
 }
 
 
-console.log(GenerateGrid(50,50))
+console.log(GenerateGrid(16,16))
+
 
 
 
