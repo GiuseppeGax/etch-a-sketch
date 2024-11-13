@@ -5,10 +5,59 @@ body{
 .center{
     justify-self: center;
     align-self: center;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
 }
+.secondhead{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.text{
+    font-weight: 500;
+    font-size: 25px;
+}
+
+#input{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#reset{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    margin-left: 15px;
+}
+
 .etchasketchname{
     justify-self: center;
-    font-size: xx-large;
+    font-size: 60px;
     font-weight: 800;
+    margin-bottom: -15px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+#container{
+    width: 700px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+
+
+
+.gridrow {
+    display: flex;
+    flex: 1; /* Each row will grow to take an equal height within the container */
+}
+
+.gridcell {
+    flex: 1;
+    border: 1px solid black;
+    background: white;
 }

@@ -6,48 +6,44 @@ const reset = document.querySelector('#reset');
 
 reset.addEventListener('click', () =>{
 const gridsize = parseInt(input.value);
-input.textContent(" ");
+input.value =" ";
+if (gridsize <= 0 || gridsize > 100){
+    alert(gridsize + " is an invalid number (try 1-100)")
+    return;
+}
+else{
 GenerateGrid(gridsize, gridsize);
-
+}
 })
 
-function GenerateGrid(x, y){
+function GenerateGrid(x, y) {
     const container = document.querySelector("#container");
-    for(let i=0; i<y;i++){
-        //create a div
+    container.innerHTML = ""; // Clear previous grid
+
+    for (let i = 0; i < y; i++) {
         const gridrow = document.createElement('div');
-        gridrow.style.display = "flex"
-        for(let o=0; o<x; o++){
-        const gridcell = document.createElement('div')
-        gridcell.style.borderStyle = "solid";
-        gridcell.style.borderColor = "black";
-        gridcell.style.borderWidth = "1px";
-        gridcell.style.background = "white";
-        gridcell.style.height = "30px";
-        gridcell.style.width = "30px";
+        gridrow.classList.add('gridrow'); // Apply CSS class
 
-        gridcell.addEventListener('mousedown', () => {
-            isDrawing = true;
-            toggleDrawing(gridcell);
-        });
-        gridcell.addEventListener('mouseover', () => {
-            if (isDrawing){
-                toggleDrawing(gridcell); 
-            }
-        });
+        for (let o = 0; o < x; o++) {
+            const gridcell = document.createElement('div');
+            gridcell.classList.add('gridcell'); // Apply CSS class to cell
 
-        gridcell.addEventListener('mouseup', () => {
-            isDrawing = false;
-        });
+            gridcell.addEventListener('mousedown', () => {
+                isDrawing = true;
+                toggleDrawing(gridcell);
+            });
+            gridcell.addEventListener('mouseover', () => {
+                if (isDrawing) {
+                    toggleDrawing(gridcell);
+                }
+            });
 
-
-        gridcell.classList.add('gridcell')
-        gridrow.appendChild(gridcell);
-        //create boxes that go inside said div
+            gridrow.appendChild(gridcell);
         }
-        container.appendChild(gridrow)
+        container.appendChild(gridrow);
     }
 }
+
 
 
 
@@ -62,9 +58,11 @@ function toggleDrawing(gridcell){
 }
 
 
-console.log(GenerateGrid(16,16))
 
 
+// document.addEventListener('mouseup', () => {
+//     isDrawing = false;
+// });
 
 
 
